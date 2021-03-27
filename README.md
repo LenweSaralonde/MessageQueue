@@ -12,7 +12,7 @@ When one or multiple messages are awaiting in the queue, the top left pixel of t
 
 If you wish to use another hardware event than mouse button 5, make a copy of the `PixelTrigger.ahk` script and edit it accordingly (instructions are provided within the script comments).
 
-Please be aware that the use of AutoHotkey is not against Blizzard's ToS and you won't get banned for just using it along with WoW. It's commonly used by players with disabilities and for multiboxing. Only obvious abuse such as spamming or automating complex actions can get you banned. Do not use any other script than the provided `PixelTrigger.ahk` unless you know what you're doing.
+Please be aware that the use of AutoHotkey is not against Blizzard's ToS and you won't get banned for just using it along with WoW. It's commonly used by players with disabilities. Only obvious abuse such as spamming or automating complex actions can get you banned. Do not use any other script than the provided `PixelTrigger.ahk` unless you know what you're doing.
 
 API documentation
 -----------------
