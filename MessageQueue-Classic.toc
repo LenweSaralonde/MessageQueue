@@ -1,4 +1,4 @@
-## Interface: 90005
+## Interface: 11307
 ## Title: MessageQueue
 ## Author: LenweSaralonde
 ## Version: 0.3.0
