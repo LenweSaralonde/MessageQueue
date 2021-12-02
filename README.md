@@ -1,18 +1,18 @@
 MessageQueue
 ============
-Implements an alternative to `SendChatMessage()` to securely send messages in chat channels in response to a hardware event.
+Implements an alternative to `SendChatMessage()` to securely send messages in chat channels in response to a hardware event such as a mouse click or a keypress.
 
 How it works
 ------------
-Use `MessageQueue.SendChatMessage()` in your add-ons and macros to send chat messages instead of `SendChatMessage()`. MessageQueue will then wait for a specific hardware event (by default mouse button 5) to send the message. A callback that will be executed after the message has been sent can also be provided.
+Use `MessageQueue.SendChatMessage()` in your add-ons and macros to send chat messages instead of `SendChatMessage()`. MessageQueue will then wait for a hardware event to send the message. A callback that will be executed after the message has been sent can also be provided so you can write your code in an asynchronous way.
 
-The default hardware event used is a mouse click on button 5. It can be changed in the bindings.
+Any of the following hardware inputs allows the queue to run: mouse click, mouse wheel, keyboard, gamepad stick or button. Unlike keyboard inputs, mouse and gamepad inputs are consumed by an invisible frame that shows up at the topmost level so any click on an action may fail if MessageQueue needs to send a message at the same time.
 
-When one or multiple messages are awaiting in the queue, the top left pixel of the WoW client turns gray (#333333). MessageQueue can be used in conjunction with [AutoHotkey](https://www.autohotkey.com/) and the provided `PixelTrigger.ahk` script to automatically send the hardware event (mouse click on button 5) to the World of Warcraft window when it's focused.
+When one or multiple messages are awaiting in the queue, the top left pixel of the WoW client turns gray (#333333). MessageQueue can be used in conjunction with [AutoHotkey](https://www.autohotkey.com/) and the provided `PixelTrigger.ahk` script to automatically send a keypress on the *PAUSE* key to the World of Warcraft window when it's focused.
 
-If you wish to use another hardware event than mouse button 5, make a copy of the `PixelTrigger.ahk` script and edit it accordingly (instructions are provided within the script comments).
+If you wish to use another hardware event than the *PAUSE* key, make a copy of the `PixelTrigger.ahk` script and edit it accordingly (instructions are provided within the script comments). Make sure to keep your copy of the script out of the add-on folder since it could be automatically deleted if you use an add-on manager.
 
-Please be aware that the use of AutoHotkey is not against Blizzard's ToS and you won't get banned for just using it along with WoW. It's commonly used by players with disabilities. Only obvious abuse such as spamming or automating complex actions can get you banned. Do not use any other script than the provided `PixelTrigger.ahk` unless you know what you're doing.
+Please be aware that the use of AutoHotkey is not against Blizzard's ToS and you won't get banned for just using it along with WoW. It's commonly used by players with disabilities. Only obvious abuse such as spamming or automating complex actions can get you banned. Do not use any other script than the provided `PixelTrigger.ahk` unless you know what you're doing. Anyway, the use of AutoHotKey and the provided script is not mandatory for MessageQueue to work, it just adds convenience.
 
 API documentation
 -----------------
