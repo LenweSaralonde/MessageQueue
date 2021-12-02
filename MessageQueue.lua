@@ -11,25 +11,53 @@ local queueFrame
 --
 MessageQueue.Init = function()
 	-- Create gray pixel frame at the top left corner for external key triggering
+	pixelFrame = CreateFrame('Frame', 'MessageQueuePixelFrame')
+	pixelFrame:SetSize(1, 1)
+	pixelFrame:SetPoint('TOPLEFT')
+	pixelFrame:Hide()
+	pixelFrame.texture = pixelFrame:CreateTexture('MessageQueueFrameTexture', 'OVERLAY', nil, 7)
+	pixelFrame.texture:SetColorTexture(0.2, 0.2, 0.2, 1) -- #333333
+	pixelFrame.texture:SetAllPoints()
+
+	-- Create queue frame to capture hardware events and proceed with the queue
 	queueFrame = CreateFrame('Frame', 'MessageQueueFrame')
-	queueFrame:EnableMouse(true)
-	queueFrame:SetSize(1, 1)
 	queueFrame:SetPoint('TOPLEFT')
+	queueFrame:SetPoint('BOTTOMRIGHT')
 	queueFrame:Hide()
-	queueFrame.texture = queueFrame:CreateTexture('MessageQueueFrameTexture', 'OVERLAY', nil, 7)
-	queueFrame.texture:SetColorTexture(0.2, 0.2, 0.2, 1) -- #333333
-	queueFrame.texture:SetAllPoints()
-	queueFrame:SetScript("OnMouseDown", MessageQueue.Run) -- You can also click the pixel to run the queue
+
+	-- Enable any possible hardware control
+	queueFrame:EnableMouse(true)
+	queueFrame:EnableMouseWheel(true)
+	queueFrame:SetMouseMotionEnabled(true)
+	queueFrame:EnableGamePadButton(true)
+	queueFrame:EnableGamePadStick(true)
+	queueFrame:EnableKeyboard(true)
+	queueFrame:SetPropagateKeyboardInput(true)
+
+	-- Capture any possible hardware event
+	queueFrame:SetScript("OnMouseDown", MessageQueue.Run)
+	queueFrame:SetScript("OnMouseUp", MessageQueue.Run)
+	queueFrame:SetScript("OnMouseWheel", MessageQueue.Run)
+	queueFrame:SetScript("OnGamePadButtonDown", MessageQueue.Run)
+	queueFrame:SetScript("OnGamePadButtonUp", MessageQueue.Run)
+	queueFrame:SetScript("OnGamePadStick", MessageQueue.Run)
+	queueFrame:SetScript("OnKeyDown", MessageQueue.Run)
+	queueFrame:SetScript("OnKeyUp", MessageQueue.Run)
 
 	-- Create updater frame
 	updaterFrame = CreateFrame('Frame')
 	updaterFrame:SetScript('OnUpdate', function()
 		if #queue > 0 then
+			local frameLevel = UIParent:GetFrameLevel() + 1000
 			queueFrame:SetFrameStrata('TOOLTIP')
-			queueFrame:SetFrameLevel(UIParent:GetFrameLevel() + 1000)
+			queueFrame:SetFrameLevel(frameLevel)
 			queueFrame:Show()
+			pixelFrame:SetFrameStrata('TOOLTIP')
+			pixelFrame:SetFrameLevel(frameLevel)
+			pixelFrame:Show()
 		else
 			queueFrame:Hide()
+			pixelFrame:Hide()
 		end
 	end)
 
@@ -89,7 +117,7 @@ end
 --- Run the first item in the queue
 -- Should be triggered by a hardware event
 MessageQueue.Run = function(f)
-	if #queue > 0 then
+	while #queue > 0 do
 		table.remove(queue, 1)()
 	end
 end
