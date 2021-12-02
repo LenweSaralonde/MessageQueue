@@ -11,7 +11,8 @@ Loop {
 		PixelGetColor, color, 0, 0
 
 		if (color = "0x333333") {
-			MouseClick, X2 ; Trigger mouse click on BUTTON5 (X2)
+			; MouseClick, X2 ; Trigger mouse click on BUTTON5 (X2). See https://www.autohotkey.com/docs/commands/MouseClick.htm
+			Send {Pause} ; Send keyboard input on the PAUSE key. See https://www.autohotkey.com/docs/commands/Send.htm
 			Random delay, 400, 600
 			Sleep delay ; avoid spamming button and being accidentally flagged for botting by WoW's anti-cheat system.
 		}
