@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.5.0
+-----
+* The AutoHotKey script now works with all WoW windows, regardless if they are active or not, as long as the top left corner is visible on screen.
+
 0.4.0
 -----
 * Now sends message using any possible hardware input: mouse click, mouse wheel, keyboard, gamepad stick or button.
