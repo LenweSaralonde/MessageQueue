@@ -1,20 +1,38 @@
 ; Install AutoHotkey to run this script https://www.autohotkey.com/
-; Triggers mouse BUTTON5 when the pixel at the top left corner turns gray (#333333), meaning that a message has to be sent by MessageQueue.
-; WoW should run in full screen mode on the leftmost monitor for this script to work.
-; If you use a different binding as mouse BUTTON5, make a copy of this script and edit line 10 of the script below.
+;
+; Monitors the color of the top left pixel of the WoW window and sends a keypress event
+; every time the pixel turns gray, when a hardware event is required to proceed.
 
-CoordMode, Pixel, Client
+TRIGGER_KEY := "{Pause}" ; Key used to trigger the hardware event in WoW
+PIXEL_COLOR := "0x333333" ; Color of the top left pixel when MessageQueue has pending actions requiring a hardware event
 
 Loop {
-	if WinActive("World of Warcraft") {
-		; Get pixel color at the top left corner
-		PixelGetColor, color, 0, 0
+	; Get all World of Warcraft window IDs
+	WinGet, windowIds, List, World of Warcraft
 
-		if (color = "0x333333") {
-			; MouseClick, X2 ; Trigger mouse click on BUTTON5 (X2). See https://www.autohotkey.com/docs/commands/MouseClick.htm
-			Send {Pause} ; Send keyboard input on the PAUSE key. See https://www.autohotkey.com/docs/commands/Send.htm
-			Random delay, 400, 600
-			Sleep delay ; avoid spamming button and being accidentally flagged for botting by WoW's anti-cheat system.
+	; Iterate over all WoW windows
+	Loop %windowIds% {
+		; Get window ID
+		windowId := windowIds%A_Index%
+
+		; Fetch WoW client position on screen, regardless of the window borders
+		VarSetCapacity(clientRect, 16, 0)
+		DllCall("user32\ClientToScreen", Ptr,windowId, Ptr,&clientRect)
+		clientX := NumGet(&clientRect, 0, "Int")
+		clientY := NumGet(&clientRect, 4, "Int")
+
+		; Get top left pixel color
+		CoordMode, Pixel, Screen
+		PixelGetColor, color, clientX, clientY
+
+		; Pixel matches trigger color
+		if (color = PIXEL_COLOR) {
+			; Send trigger key to the targeted window
+			ControlSend, , %TRIGGER_KEY%, ahk_id %windowId%
+
+			; Add delay to prevent button spam and being accidentally flagged for botting by WoW's anti-cheat system
+			Random delay, 300, 600
+			Sleep delay
 		}
 	}
 

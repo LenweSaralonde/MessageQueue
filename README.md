@@ -8,7 +8,13 @@ Use `MessageQueue.SendChatMessage()` in your add-ons and macros to send chat mes
 
 Any of the following hardware inputs allows the queue to run: mouse click, mouse wheel, keyboard, gamepad stick or button. Unlike keyboard inputs, mouse and gamepad inputs are consumed by an invisible frame that shows up at the topmost level so any click on an action may fail if MessageQueue needs to send a message at the same time.
 
-When one or multiple messages are awaiting in the queue, the top left pixel of the WoW client turns gray (#333333). MessageQueue can be used in conjunction with [AutoHotkey](https://www.autohotkey.com/) and the provided `PixelTrigger.ahk` script to automatically send a keypress on the *PAUSE* key to the World of Warcraft window when it's focused.
+Use with AutoHotKey
+-------------------
+MessageQueue can be used in conjunction with [AutoHotkey](https://www.autohotkey.com/) and the provided `PixelTrigger.ahk` script to automatically send hardware events to the World of Warcraft window when needed.
+
+The script monitors the color of the top left pixel of the WoW window and sends a keypress on the *PAUSE* key every time the pixel turns gray (*#333333*). The WoW window doesn't need to be active but the top left corner should remain visible on the screen and not be covered by another window for the script to work.
+
+The AutoHotKey script only works on Windows. If you're running MessageQueue on Mac, you'll need to trigger your hardware event manually.
 
 If you wish to use another hardware event than the *PAUSE* key, make a copy of the `PixelTrigger.ahk` script and edit it accordingly (instructions are provided within the script comments). Make sure to keep your copy of the script out of the add-on folder since it could be automatically deleted if you use an add-on manager.
 
@@ -17,7 +23,8 @@ Please be aware that the use of AutoHotkey is not against Blizzard's ToS and you
 API documentation
 -----------------
 ### MessageQueue.SendChatMessage
-`MessageQueue.SendChatMessage("msg" [,"chatType" [,languageID [,"target" [, "callback"]]]]);`
+`MessageQueue.SendChatMessage("msg" [,"chatType" [,languageID [,"target" [, "callback"]]]])`
+
 Add a message to the queue if the target requires a hardware event (chatType is either "SAY", "YELL" or "CHANNEL"). For any other chatType, the message is sent instantly.
 
 Arguments are the same as the regular [SendChatMessage](https://wow.gamepedia.com/API_SendChatMessage) function.
@@ -25,17 +32,20 @@ Arguments are the same as the regular [SendChatMessage](https://wow.gamepedia.co
 The optional **callback** function will be executed when the message has been sent. The callback should not contain any other code requiring a hardware event.
 
 ### MessageQueue.Enqueue
-`MessageQueue.Enqueue("f");`
-Enqueue a function that requires a hardware event to run. The function code should not perform more than one action requiring a hardware event.
+`MessageQueue.Enqueue(func)`
+
+Enqueue a function that requires a hardware event to run. The function may not perform more than one action requiring a hardware event.
 
 Shares the same queue as **MessageQueue.SendChatMessage()**.
 
 ### MessageQueue.GetNumPendingMessages
 `messageCount = MessageQueue.GetNumPendingMessages()`
+
 Returns the number of messages awaiting in the queue.
 
 ### MessageQueue.Run
 `MessageQueue.Run()`
+
 Runs the first message awaiting in queue. Should only be called in response to a hardware event. If for some reason the message fails, it won't be possible to attempt it again.
 
 Integration guide
