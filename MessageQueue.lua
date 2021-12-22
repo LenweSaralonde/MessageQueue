@@ -1,8 +1,5 @@
 MessageQueue = {}
 
--- Default binding key
-local BINDING_KEY = "BUTTON5" -- Mouse button 5
-
 local queue = {}
 local updaterFrame
 local queueFrame
@@ -66,21 +63,6 @@ MessageQueue.Init = function()
 	SLASH_MESSAGEQUEUE1 = "/mq"
 	SLASH_MESSAGEQUEUE2 = "/msgqueue"
 	SLASH_MESSAGEQUEUE3 = "/messagequeue"
-
-	-- Declare binding strings
-	BINDING_HEADER_MESSAGEQUEUE_HEADER = "Message queue"
-	BINDING_NAME_MESSAGEQUEUE = "Send message in queue"
-
-	-- Set default binding
-	MessageQueue.InitBinding()
-end
-
---- Set the default binding, if needed
---
-MessageQueue.InitBinding = function()
-	if GetBindingKey("MESSAGEQUEUE") == nil and GetBindingByKey(BINDING_KEY) == nil then
-		SetBinding(BINDING_KEY, "MESSAGEQUEUE")
-	end
 end
 
 --- Enqueue a function
