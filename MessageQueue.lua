@@ -105,7 +105,7 @@ MessageQueue.Run = function(f)
 end
 
 --- Returns the number of messages awaiting in queue
--- @return (number)
+-- @return (number) numPendingMessages
 MessageQueue.GetNumPendingMessages = function()
 	return #queue
 end
