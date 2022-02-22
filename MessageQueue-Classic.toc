@@ -1,7 +1,7 @@
-## Interface: 11401
+## Interface: 11402
 ## Title: MessageQueue
 ## Author: LenweSaralonde
-## Version: 0.5.0
+## Version: 0.5.1
 ## Notes: Securely send messages in chat channels in response to hardware event
 
 MessageQueue.lua

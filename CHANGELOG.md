@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.5.1
+-----
+* TOC bump for WoW 9.2, WoW BC Classic 2.5.3 and WoW Classic 1.14.2.
+
 0.5.0
 -----
 * The AutoHotKey script now works with all WoW windows, regardless if they are active or not, as long as the top left corner is visible on screen.
