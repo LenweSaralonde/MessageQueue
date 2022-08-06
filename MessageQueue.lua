@@ -3,6 +3,7 @@ MessageQueue = {}
 local queue = {}
 local updaterFrame
 local queueFrame
+local flashTimer
 
 --- Main initialization
 --
@@ -69,6 +70,10 @@ end
 -- @param f (function)
 MessageQueue.Enqueue = function(f)
 	table.insert(queue, f)
+	if flashTimer then
+		flashTimer:Cancel()
+	end
+	flashTimer = C_Timer.NewTimer(.25, FlashClientIcon)
 end
 
 --- Enqueue a chat message.
@@ -99,6 +104,9 @@ end
 --- Run the first item in the queue
 -- Should be triggered by a hardware event
 MessageQueue.Run = function(f)
+	if flashTimer then
+		flashTimer:Cancel()
+	end
 	while #queue > 0 do
 		table.remove(queue, 1)()
 	end
