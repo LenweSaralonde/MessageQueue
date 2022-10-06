@@ -3,6 +3,7 @@ MessageQueue = {}
 local queue = {}
 local updaterFrame
 local queueFrame
+local pixelFrame
 local flashTimer
 
 --- Main initialization
@@ -103,7 +104,7 @@ end
 
 --- Run the first item in the queue
 -- Should be triggered by a hardware event
-MessageQueue.Run = function(f)
+MessageQueue.Run = function()
 	if flashTimer then
 		flashTimer:Cancel()
 	end
