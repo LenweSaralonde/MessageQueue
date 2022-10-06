@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.5.3
+-----
+* Code cleanup.
+
 0.5.2
 -----
 * Added support for Wrath of the Lich King Classic.
