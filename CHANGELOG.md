@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.5.4
+-----
+* TOC bump for WoW patch 10.0.0.
+
 0.5.3
 -----
 * Code cleanup.
