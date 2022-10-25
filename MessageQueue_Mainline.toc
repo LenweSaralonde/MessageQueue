@@ -1,4 +1,4 @@
-## Interface: 90207
+## Interface: 100000
 ## Title: MessageQueue
 ## Author: LenweSaralonde
 ## Version: 0.5.3
