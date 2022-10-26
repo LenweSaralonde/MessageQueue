@@ -6,6 +6,8 @@ local queueFrame
 local pixelFrame
 local flashTimer
 
+local FlashClientIcon = function() FlashClientIcon() end -- C_Timer does not allow C functions so let's wrap this bad boy
+
 --- Main initialization
 --
 MessageQueue.Init = function()
