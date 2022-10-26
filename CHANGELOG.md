@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.5.5
+-----
+* Fixed broken flash client icon.
+
 0.5.4
 -----
 * TOC bump for WoW patch 10.0.0.
