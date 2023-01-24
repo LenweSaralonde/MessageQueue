@@ -1,4 +1,4 @@
-## Interface: 30400
+## Interface: 30401
 ## Title: MessageQueue
 ## Author: LenweSaralonde
 ## Version: 0.5.6
