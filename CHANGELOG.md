@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.5.7
+-----
+* TOC bump for WoW patch 10.0.5.
+* TOC bump for WoW Classic patch 3.4.1.
+
 0.5.6
 -----
 * TOC bump for WoW patch 10.0.2.
