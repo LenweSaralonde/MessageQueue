@@ -79,6 +79,15 @@ MessageQueue.Enqueue = function(f)
 	flashTimer = C_Timer.NewTimer(.25, FlashClientIcon)
 end
 
+--- Clear a queue
+MessageQueue.ClearQueue = function()
+	if flashTimer then
+		flashTimer:Cancel()
+	end
+	count = #queue
+	for i = 0, count do queue[i] = nil end
+end
+
 --- Enqueue a chat message.
 -- Same parameters as the regular SendChatMessage
 -- Allows an optional callback that will run after the message has been sent.
