@@ -1,6 +1,12 @@
 Changelog
 =========
 
+
+0.6.0
+-----
+* Added function `MessageQueue.Clear()`.
+* TOC bump for WoW patch 10.0.7.
+
 0.5.7
 -----
 * TOC bump for WoW patch 10.0.5.
