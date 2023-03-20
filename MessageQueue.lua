@@ -121,5 +121,14 @@ MessageQueue.GetNumPendingMessages = function()
 	return #queue
 end
 
+--- Clear the queue
+--
+MessageQueue.Clear = function()
+	wipe(queue)
+	if flashTimer then
+		flashTimer:Cancel()
+	end
+end
+
 -- Initialize on startup
 MessageQueue.Init()

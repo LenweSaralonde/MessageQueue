@@ -48,6 +48,11 @@ Returns the number of messages awaiting in the queue.
 
 Runs the first message awaiting in queue. Should only be called in response to a hardware event. If for some reason the message fails, it won't be possible to attempt it again.
 
+### MessageQueue.Clear
+`MessageQueue.Clear()`
+
+Clears the entire queue.
+
 Integration guide
 -----------------
 The integration of MessageQueue in your add-on is pretty straightforward.
