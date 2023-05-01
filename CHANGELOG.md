@@ -1,6 +1,9 @@
 Changelog
 =========
 
+0.6.1
+-----
+* Updated for WoW patch 10.1.
 
 0.6.0
 -----
