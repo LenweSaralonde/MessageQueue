@@ -10,15 +10,18 @@ Any of the following hardware inputs allows the queue to run: mouse click, mouse
 
 Use with AutoHotKey
 -------------------
-MessageQueue can be used in conjunction with [AutoHotkey](https://www.autohotkey.com/) and the provided `PixelTrigger.ahk` script to automatically send hardware events to the World of Warcraft window when needed.
+MessageQueue can be used in conjunction with [AutoHotkey](https://www.autohotkey.com/) and the provided `PixelTrigger.v*.ahk` script to automatically send hardware events to the World of Warcraft window when needed.
+
+* For **AutoHotKey v1.1**, use `PixelTrigger.v1.ahk`.
+* For **AutoHotKey v2.0**, use `PixelTrigger.v2.ahk`.
 
 The script monitors the color of the top left pixel of the WoW window and sends a keypress on the *PAUSE* key every time the pixel turns gray (*#333333*). The WoW window doesn't need to be active but the top left corner should remain visible on the screen and not be covered by another window for the script to work.
 
 The AutoHotKey script only works on Windows. If you're running MessageQueue on Mac, you'll need to trigger your hardware event manually.
 
-If you wish to use another hardware event than the *PAUSE* key, make a copy of the `PixelTrigger.ahk` script and edit it accordingly (instructions are provided within the script comments). Make sure to keep your copy of the script out of the add-on folder since it could be automatically deleted if you use an add-on manager.
+If you wish to use another hardware event than the *PAUSE* key, make a copy of the `PixelTrigger.v*.ahk` script and edit it accordingly (instructions are provided within the script comments). Make sure to keep your copy of the script out of the add-on folder since it could be automatically deleted if you use an add-on manager.
 
-Please be aware that the use of AutoHotkey is not against Blizzard's ToS and you won't get banned for just using it along with WoW. It's commonly used by players with disabilities. Only obvious abuse such as spamming or automating complex actions can get you banned. Do not use any other script than the provided `PixelTrigger.ahk` unless you know what you're doing. Anyway, the use of AutoHotKey and the provided script is not mandatory for MessageQueue to work, it just adds convenience.
+Please be aware that the use of AutoHotkey is not against Blizzard's ToS and you won't get banned for just using it along with WoW. It's commonly used by players with disabilities. Only obvious abuse such as spamming or automating complex actions can get you banned. Do not use any other script than the provided `PixelTrigger.v*.ahk` unless you know what you're doing. Anyway, the use of AutoHotKey and the provided script is not mandatory for MessageQueue to work, it just adds convenience.
 
 API documentation
 -----------------

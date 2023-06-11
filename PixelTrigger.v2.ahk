@@ -1,4 +1,6 @@
-; Install AutoHotkey to run this script https://www.autohotkey.com/
+#Requires AutoHotkey v2.0
+
+; Install AutoHotkey 2.0 to run this script https://www.autohotkey.com/
 ;
 ; Monitors the color of the top left pixel of the WoW window and sends a keypress event
 ; every time the pixel turns gray, when a hardware event is required to proceed.
@@ -8,30 +10,24 @@ PIXEL_COLOR := "0x333333" ; Color of the top left pixel when MessageQueue has pe
 
 Loop {
 	; Get all World of Warcraft window IDs
-	WinGet, windowIds, List, World of Warcraft
+	windowIds := WinGetList("World of Warcraft")
 
 	; Iterate over all WoW windows
-	Loop %windowIds% {
-		; Get window ID
-		windowId := windowIds%A_Index%
-
+	for windowId in windowIds {
 		; Fetch WoW client position on screen, regardless of the window borders
-		VarSetCapacity(clientRect, 16, 0)
-		DllCall("user32\ClientToScreen", Ptr,windowId, Ptr,&clientRect)
-		clientX := NumGet(&clientRect, 0, "Int")
-		clientY := NumGet(&clientRect, 4, "Int")
+		WinGetClientPos &clientX, &clientY, &clientW, &clientH, windowId
 
 		; Get top left pixel color
-		CoordMode, Pixel, Screen
-		PixelGetColor, color, clientX, clientY
+		CoordMode "Pixel", "Screen"
+		color := PixelGetColor(clientX, clientY)
 
 		; Pixel matches trigger color
 		if (color = PIXEL_COLOR) {
 			; Send trigger key to the targeted window
-			ControlSend, , %TRIGGER_KEY%, ahk_id %windowId%
+			ControlSend TRIGGER_KEY, windowId
 
 			; Add delay to prevent button spam and being accidentally flagged for botting by WoW's anti-cheat system
-			Random delay, 300, 600
+			delay := Random(300, 600)
 			Sleep delay
 		}
 	}
