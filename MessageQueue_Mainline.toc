@@ -1,4 +1,4 @@
-## Interface: 100100
+## Interface: 100105
 ## Title: MessageQueue
 ## Author: LenweSaralonde
 ## Version: 0.7.0
