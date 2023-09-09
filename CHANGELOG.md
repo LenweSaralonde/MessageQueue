@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.7.1
+-----
+* Updated for WoW patch 10.1.7 and WoW Classic patch 1.14.4.
+
 0.7.0
 -----
 * Added `PixelTrigger.v2.ahk` script for AutoHotKey v2.0.
