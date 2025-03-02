@@ -1,7 +1,7 @@
 ## Interface: 110100
 ## Title: MessageQueue
 ## Author: LenweSaralonde
-## Version: 0.8.0
+## Version: 0.8.1
 ## IconTexture: interface/icons/inv_misc_gear_01.blp
 ## Notes: Securely send messages in chat channels in response to hardware event
 ## Category-enUS: Chat
