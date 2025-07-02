@@ -1,4 +1,4 @@
-## Interface: 110105
+## Interface: 110107
 ## Title: MessageQueue
 ## Author: LenweSaralonde
 ## Version: 0.8.1
