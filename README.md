@@ -1,10 +1,10 @@
 MessageQueue
 ============
-Implements an alternative to `SendChatMessage()` to securely send messages in chat channels in response to a hardware event such as a mouse click or a keypress.
+Implements an alternative to `C_ChatInfo.SendChatMessage()` to securely send messages in chat channels in response to a hardware event such as a mouse click or a keypress.
 
 How it works
 ------------
-Use `MessageQueue.SendChatMessage()` in your add-ons and macros to send chat messages instead of `SendChatMessage()`. MessageQueue will then wait for a hardware event to send the message. A callback that will be executed after the message has been sent can also be provided so you can write your code in an asynchronous way.
+Use `MessageQueue.SendChatMessage()` in your add-ons and macros to send chat messages instead of `C_ChatInfo.SendChatMessage()`. MessageQueue will then wait for a hardware event to send the message. A callback that will be executed after the message has been sent can also be provided so you can write your code in an asynchronous way.
 
 Any of the following hardware inputs allows the queue to run: mouse click, mouse wheel, keyboard, gamepad stick or button. Unlike keyboard inputs, mouse and gamepad inputs are consumed by an invisible frame that shows up at the topmost level so any click on an action may fail if MessageQueue needs to send a message at the same time.
 
@@ -30,7 +30,7 @@ API documentation
 
 Add a message to the queue if the target requires a hardware event (chatType is either "SAY", "YELL" or "CHANNEL"). For any other chatType, the message is sent instantly.
 
-Arguments are the same as the regular [SendChatMessage](https://wow.gamepedia.com/API_SendChatMessage) function.
+Arguments are the same as the regular [C_ChatInfo.SendChatMessage](https://warcraft.wiki.gg/wiki/API_C_ChatInfo.SendChatMessage) function.
 
 The optional **callback** function will be executed when the message has been sent. The callback should not contain any other code requiring a hardware event.
 
@@ -63,13 +63,13 @@ The integration of MessageQueue in your add-on is pretty straightforward.
 First, add MessageQueue as a required dependency for your add-on by adding the following in the .toc file:
 `## RequiredDeps: MessageQueue`
 
-Then, just replace `SendChatMessage()` calls by `MessageQueue.SendChatMessage()`.
+Then, just replace `C_ChatInfo.SendChatMessage()` calls by `MessageQueue.SendChatMessage()`.
 
 However, keep in mind that the message will not be sent instantly (for example if the World of Warcraft window is not in focus). If the rest of your code requires the message to be actually sent, you should pause the execution of the current process then resume it in the callback.
 
 Before
 ```lua
-SendChatMessage(text, 'SAY')
+C_ChatInfo.SendChatMessage(text, 'SAY')
 -- Do stuff
 return
 ```

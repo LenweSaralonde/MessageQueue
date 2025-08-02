@@ -7,6 +7,7 @@ local pixelFrame
 local flashTimer
 
 local FlashClientIcon = function() FlashClientIcon() end -- C_Timer does not allow C functions so let's wrap this bad boy
+local SendChatMessage = (C_ChatInfo and C_ChatInfo.SendChatMessage or SendChatMessage)
 
 --- Main initialization
 --
@@ -80,7 +81,7 @@ MessageQueue.Enqueue = function(f)
 end
 
 --- Enqueue a chat message.
--- Same parameters as the regular SendChatMessage
+-- Same parameters as the regular C_ChatInfo.SendChatMessage
 -- Allows an optional callback that will run after the message has been sent.
 -- The callback sould not contain any other hardware triggered function.
 -- @param msg (string)

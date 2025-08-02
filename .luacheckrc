@@ -72,6 +72,12 @@ stds.wow = {
 		"FlashClientIcon",
 		"SendChatMessage",
 
+		C_ChatInfo = {
+			fields = {
+				"SendChatMessage"
+			},
+		},
+
 		-- Global Mixins and UI Objects
 		UIParent = {
 			fields = {
