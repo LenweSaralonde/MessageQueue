@@ -1,7 +1,7 @@
 ## Interface: 11507
 ## Title: MessageQueue
 ## Author: LenweSaralonde
-## Version: 0.8.1
+## Version: 0.8.2
 ## Notes: Securely send messages in chat channels in response to hardware event
 ## Category-enUS: Chat
 ## Category-deDE: Chat

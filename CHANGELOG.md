@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.8.2
+-----
+* Updated for WoW retail patch 11.2.
+
 0.8.1
 -----
 * Added add-on category.
