@@ -1,4 +1,4 @@
-## Interface: 50500
+## Interface: 50503
 ## Title: MessageQueue
 ## Author: LenweSaralonde
 ## Version: 0.8.2
