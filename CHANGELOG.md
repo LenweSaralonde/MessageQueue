@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.9.2
+-----
+* TOC bump for WoW Midnight 12.0.5 patch.
+
 0.9.1
 -----
 * TOC bump for WoW Midnight 12.0.1 prepatch.
