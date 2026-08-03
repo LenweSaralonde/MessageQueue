@@ -1,4 +1,4 @@
-## Interface: 20505
+## Interface: 20506
 ## Title: MessageQueue
 ## Author: LenweSaralonde
 ## Version: 0.9.3
