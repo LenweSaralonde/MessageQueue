@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.9.4
+-----
+* Updated for Wow Midnight 12.1.5 and WoW Forever.
+
 0.9.3
 -----
 * Updated for Wow Retail 12.0.7 and MoP Classic 5.5.4.

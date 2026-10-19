@@ -1,7 +1,7 @@
 ## Interface: 120105, 50504, 20506, 11509, 16001
 ## Title: MessageQueue
 ## Author: LenweSaralonde
-## Version: 0.9.3
+## Version: 0.9.4
 ## IconTexture: interface/icons/inv_misc_gear_01.blp
 ## Notes: Securely send messages in chat channels in response to hardware event
 ## Category-enUS: Chat
