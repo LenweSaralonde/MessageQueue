@@ -15,5 +15,6 @@
 ## Category-ruRU: Чат
 ## Category-zhCN: 聊天
 ## Category-zhTW: 對話
+## X-Curse-Project-ID: 358350
 
 MessageQueue.lua
